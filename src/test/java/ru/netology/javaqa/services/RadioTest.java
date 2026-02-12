@@ -90,6 +90,40 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+
+    @Test
+    public void shouldSetCurrentVolume() { //проверка выставления текущего уровня громкости
+        Radio radio = new Radio();
+        radio.setCurrentVolume(50);
+
+        int expected = 50;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetCurrentVolumeOverMax() { //проверка выставления уровня громкости выше максимума
+        Radio radio = new Radio();
+        radio.setCurrentVolume(101);
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetCurrentVolumeDownMin() { //проверка выставления уровня громкости ниже минимума
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-1);
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
     @Test
     public void shouldIncreaseVolume() { //проверка увеличения громкости на 1
         Radio radio = new Radio();
@@ -104,7 +138,7 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldIncreaseVolumeOverMax() { //проверка увеличения громкости при достижение максимума
+    public void shouldIncreaseVolumeOverMax() { //проверка увеличения громкости при достижении максимума
         Radio radio = new Radio();
         radio.setCurrentVolume(100);
 
@@ -130,7 +164,7 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldDecreaseVolumeDownMin() { //проверка уменьшения громкости при достижение минимума
+    public void shouldDecreaseVolumeDownMin() { //проверка уменьшения громкости при достижении минимума
         Radio radio = new Radio();
         radio.setCurrentVolume(0);
 
