@@ -41,18 +41,31 @@ public class RadioTest {
     @Test
     public void shouldNextNumberStation() { //проверка переключения на следующую станцию
         Radio radio = new Radio();
-        radio.setCurrentStation(0);
+        radio.setCurrentStation(5);
 
         radio.nextStation();
 
-        int expected = 1;
+        int expected = 6;
         int actual = radio.getNumberCurrentStation();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldNextNumberStationOverMax() { //проверка переключения с последней станции на первую
+    public void shouldNextNumberPenultimateStation() { //проверка переключения с предпоследней на следующую станцию
+        Radio radio = new Radio();
+        radio.setCurrentStation(8);
+
+        radio.nextStation();
+
+        int expected = 9;
+        int actual = radio.getNumberCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNextNumberStationOverMax() { //проверка переключения с последней 9 станции на первую 0
         Radio radio = new Radio();
         radio.setCurrentStation(9);
 
@@ -67,18 +80,18 @@ public class RadioTest {
     @Test
     public void shouldPrevNumberStation() { //проверка переключения на предыдущую станцию
         Radio radio = new Radio();
-        radio.setCurrentStation(9);
+        radio.setCurrentStation(5);
 
         radio.prevStation();
 
-        int expected = 8;
+        int expected = 4;
         int actual = radio.getNumberCurrentStation();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldPrevNumberStationDownMin() { //проверка переключения с первой станции на последнюю
+    public void shouldPrevNumberStationDownMin() { //проверка переключения с первой 0 станции на последнюю 9
         Radio radio = new Radio();
         radio.setCurrentStation(0);
 
@@ -90,6 +103,18 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void shouldPrevNumberPreviousStation() { //проверка переключения с первой станции на нулевую
+        Radio radio = new Radio();
+        radio.setCurrentStation(1);
+
+        radio.prevStation();
+
+        int expected = 0;
+        int actual = radio.getNumberCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
     public void shouldSetCurrentVolume() { //проверка выставления текущего уровня громкости

@@ -45,20 +45,14 @@ public class Radio {
     }
 
     public void nextStation() {  //увеличение номера станции на 1
-        if (numberCurrentStation < 9) {
-            numberCurrentStation++;
-        }
         if (numberCurrentStation == 9) {
             numberCurrentStation = 0;
-        }
+        } else {numberCurrentStation++;}
     }
 
     public void prevStation() {  //уменьшение номера станции на 1
-        if (numberCurrentStation > 0) {
-            numberCurrentStation--;
-        }
         if (numberCurrentStation == 0) {
             numberCurrentStation = 9;
-        }
+        } else {numberCurrentStation--;}
     }
 }
