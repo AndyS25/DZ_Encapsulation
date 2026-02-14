@@ -7,6 +7,7 @@ public class RadioTest {
 
     //Тесты управления радиостанциями с конструктором
     Radio radio = new Radio(20);
+
     @Test
     public void shouldSetNumberStation() { //проверка выставления заданного номера станции
         radio.setCurrentStation(5);

@@ -1,4 +1,5 @@
 package ru.netology.javaqa.services;
+
 public class Radio {
     private int minNumberStation = 0;
     private int maxNumberStation = 9;
